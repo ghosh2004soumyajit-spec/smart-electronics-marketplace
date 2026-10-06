@@ -1,0 +1,174 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   VoltHaus — global styles
+   Signature concept: "Spec sheet as interface".
+   Paper base, graphite ink, hairline rules, mono annotations,
+   one volt accent. Motion is fast and never blocks browsing.
+   ============================================================ */
+
+@layer base {
+  :root {
+    color-scheme: light;
+  }
+
+  html {
+    /* Lenis drives smooth scrolling; keep native for anchors/focus */
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-paper text-ink font-sans antialiased;
+    font-feature-settings: 'ss01';
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: #ce3607;
+    color: #faf8f2;
+  }
+
+  /* Visible, consistent keyboard focus — WCAG 2.4.7 */
+  :focus-visible {
+    outline: 2px solid #ce3607;
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  /* Tabular figures for all price/spec data so columns don't jitter */
+  .tnum,
+  input[type='number'] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Form controls inherit the type system */
+  input,
+  select,
+  textarea,
+  button {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Kill the number-input spinners; this is a datasheet, not a spreadsheet */
+  input[type='number']::-webkit-outer-spin-button,
+  input[type='number']::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+@layer components {
+  /* Mono annotation label — the voice of the spec sheet */
+  .label {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-ink3;
+  }
+
+  .label-volt {
+    @apply font-mono text-[11px] uppercase tracking-[0.14em] text-volt;
+  }
+
+  /* Hairline rule between datasheet rows */
+  .rule {
+    @apply border-t border-line;
+  }
+
+  /* Primary CTA — hard-edged, ink outline, volt fill on hover */
+  .btn-primary {
+    @apply relative inline-flex items-center justify-center gap-2 overflow-hidden
+           bg-ink px-6 py-3 font-mono text-[12px] uppercase tracking-[0.14em]
+           text-paper transition-colors duration-200;
+  }
+  .btn-primary:hover:not(:disabled) {
+    @apply bg-volt;
+  }
+  .btn-primary:disabled {
+    @apply cursor-not-allowed opacity-40;
+  }
+
+  /* Secondary/ghost CTA */
+  .btn-ghost {
+    @apply relative inline-flex items-center justify-center gap-2
+           border border-ink px-6 py-3 font-mono text-[12px] uppercase tracking-[0.14em]
+           text-ink transition-colors duration-200 hover:bg-ink hover:text-paper;
+  }
+
+  /* Animated underline link (signature micro-interaction) */
+  .ul-link {
+    @apply relative inline-block;
+  }
+  .ul-link::after {
+    content: '';
+    @apply absolute -bottom-0.5 left-0 h-px w-full bg-current;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .ul-link:hover::after,
+  .ul-link:focus-visible::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  /* Blueprint grid backdrop for hero/feature panels */
+  .bg-blueprint {
+    background-image: linear-gradient(rgba(25, 24, 23, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(25, 24, 23, 0.05) 1px, transparent 1px);
+    background-size: 34px 34px;
+  }
+
+  /* Dotted leader line between a spec key and its value (like a real datasheet) */
+  .leader {
+    flex: 1;
+    border-bottom: 1px dotted #c6bda6;
+    margin: 0 0.6rem 0.35rem;
+  }
+
+  /* Skeleton shimmer — subtle, paper-toned */
+  .skeleton {
+    @apply relative overflow-hidden bg-paper2;
+  }
+  .skeleton::after {
+    content: '';
+    @apply absolute inset-0;
+    background: linear-gradient(90deg, transparent, rgba(250, 248, 242, 0.85), transparent);
+    background-size: 400px 100%;
+    animation: shimmer 1.4s infinite linear;
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but keep scrolling (chip rows, filter lists) */
+  .no-bar {
+    scrollbar-width: none;
+  }
+  .no-bar::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Text balance for display headings */
+  .balance {
+    text-wrap: balance;
+  }
+}
+
+/* ============================================================
+   Reduced motion — the whole site degrades to instant, static
+   presentation. No smooth scroll, no marquee, no reveals.
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .animate-marquee {
+    animation: none !important;
+  }
+}
