@@ -13,11 +13,17 @@ import orderRoutes from './routes/orderRoutes.js';
 import adminRoutes from './routes/adminRoutes.js';
 import userRoutes from './routes/userRoutes.js';
 
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const app = express();
 const PORT = process.env.PORT || 5000;
 
 // Security & Middleware
-app.use(helmet());
+app.use(helmet({ crossOriginResourcePolicy: { policy: 'cross-origin' } }));
 app.use(
   cors({
     origin: process.env.CORS_ORIGIN || 'http://localhost:5173',
@@ -26,6 +32,9 @@ app.use(
 );
 app.use(express.json());
 app.use(morgan('dev'));
+
+// Serve static assets (product photos)
+app.use('/images', express.static(path.join(__dirname, 'public/images')));
 
 // Health check
 app.get('/api/health', (req, res) => {

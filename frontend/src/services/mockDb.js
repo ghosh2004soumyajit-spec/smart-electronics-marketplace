@@ -78,12 +78,58 @@ const bySlug = (arr, slug) => {
   return arr.find((x) => x.slug === raw || x.slug === normalized || norm(x.name) === raw || normSlug(x.name) === normalized);
 };
 
+const productImageMap = {
+  1: '/images/products/ac-split.jpg',
+  2: '/images/products/ac-split.jpg',
+  3: '/images/products/ac-split.jpg',
+  4: '/images/products/ac-windfree.jpg',
+  5: '/images/products/ac-split.jpg',
+  6: '/images/products/ac-split.jpg',
+  7: '/images/products/ac-window.jpg',
+  8: '/images/products/fridge-double-door.jpg',
+  9: '/images/products/fridge-double-door.jpg',
+  10: '/images/products/fridge-single-door.jpg',
+  11: '/images/products/fridge-single-door.jpg',
+  12: '/images/products/fridge-bottom-mount.jpg',
+  13: '/images/products/fridge-side-by-side.jpg',
+  14: '/images/products/washer-front-load.jpg',
+  15: '/images/products/washer-top-load.jpg',
+  16: '/images/products/washer-front-load.jpg',
+  17: '/images/products/washer-front-load.jpg',
+  18: '/images/products/washer-top-load.jpg',
+  19: '/images/products/washer-top-load.jpg',
+  20: '/images/products/tv-qled.jpg',
+  21: '/images/products/tv-qled.jpg',
+  22: '/images/products/tv-oled.jpg',
+  23: '/images/products/tv-qled.jpg',
+  24: '/images/products/tv-qled.jpg',
+  25: '/images/products/tv-qled.jpg',
+  26: '/images/products/phone-galaxy.jpg',
+  27: '/images/products/phone-android.jpg',
+  28: '/images/products/phone-xiaomi.jpg',
+  29: '/images/products/phone-android.jpg',
+  30: '/images/products/phone-iphone.jpg',
+  31: '/images/products/phone-xiaomi.jpg',
+  32: '/images/products/ac-split.jpg',
+  33: '/images/products/fridge-side-by-side.jpg',
+  34: '/images/products/washer-front-load.jpg',
+  35: '/images/products/tv-qled.jpg',
+  36: '/images/products/tv-oled.jpg',
+  37: '/images/products/phone-galaxy.jpg',
+  38: '/images/products/phone-iphone.jpg',
+  39: '/images/products/phone-android.jpg',
+  40: '/images/products/phone-xiaomi.jpg',
+};
+
 /** Decorate a raw product into the API shape components consume. */
 export function toApiProduct(p) {
   const brand = bySlug(brands, p.brandSlug);
   const category = bySlug(categories, p.categorySlug);
+  const primaryImg = p.primary_image || productImageMap[p.id] || null;
   return {
     ...p,
+    primary_image: primaryImg,
+    images: p.images || (primaryImg ? [{ image_url: primaryImg, is_primary: true }] : []),
     brand: brand ? { slug: brand.slug, name: brand.name } : null,
     category: category ? { slug: category.slug, name: category.name } : null,
     heroSpec: category?.hero ? p.specs[category.hero.key] : null,

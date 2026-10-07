@@ -10,15 +10,15 @@ INSERT INTO users (email, password_hash, full_name, phone, role) VALUES
 -- 2. SEED CATEGORIES
 INSERT INTO categories (id, name, slug, description, image_url, display_order) VALUES
 (1, 'Air Conditioners', 'air-conditioners', 'Energy-efficient split & window ACs with smart inverter tech',
-   'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=600&q=80', 1),
+   '/images/products/ac-split.jpg', 1),
 (2, 'Refrigerators',   'refrigerators',    'Single door, double door, and side-by-side smart refrigerators',
-   'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=600&q=80', 2),
+   '/images/products/fridge-double-door.jpg', 2),
 (3, 'Washing Machines','washing-machines',  'Front load & top load fully automatic washing machines',
-   'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=600&q=80', 3),
+   '/images/products/washer-front-load.jpg', 3),
 (4, 'Televisions',     'televisions',       '4K Ultra HD OLED, QLED, and Smart LED TVs',
-   'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=600&q=80', 4),
+   '/images/products/tv-oled.jpg', 4),
 (5, 'Smartphones',     'smartphones',       'Latest 5G smartphones from top brands with flagship features',
-   'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=600&q=80', 5);
+   '/images/products/phone-galaxy.jpg', 5);
 
 ALTER SEQUENCE categories_id_seq RESTART WITH 6;
 
@@ -315,51 +315,51 @@ ALTER SEQUENCE products_id_seq RESTART WITH 41;
 -- 5. SEED PRODUCT IMAGES
 INSERT INTO product_images (product_id, image_url, is_primary, display_order) VALUES
 -- Air Conditioners (1-7)
-(1,  'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(2,  'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(3,  'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(4,  'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(5,  'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(6,  'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(7,  'https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?auto=format&fit=crop&w=800&q=80', TRUE,  1),
+(1,  '/images/products/ac-split.jpg',            TRUE,  1),
+(2,  '/images/products/ac-split.jpg',            TRUE,  1),
+(3,  '/images/products/ac-split.jpg',            TRUE,  1),
+(4,  '/images/products/ac-windfree.jpg',         TRUE,  1),
+(5,  '/images/products/ac-split.jpg',            TRUE,  1),
+(6,  '/images/products/ac-split.jpg',            TRUE,  1),
+(7,  '/images/products/ac-window.jpg',           TRUE,  1),
 -- Refrigerators (8-13)
-(8,  'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(9,  'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(10, 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(11, 'https://images.unsplash.com/photo-1584568694244-14fbdf83bd30?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(12, 'https://images.unsplash.com/photo-1575908539614-ff89490f4a78?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(13, 'https://images.unsplash.com/photo-1584992236310-6edddc08acff?auto=format&fit=crop&w=800&q=80', TRUE,  1),
+(8,  '/images/products/fridge-double-door.jpg',  TRUE,  1),
+(9,  '/images/products/fridge-double-door.jpg',  TRUE,  1),
+(10, '/images/products/fridge-single-door.jpg',  TRUE,  1),
+(11, '/images/products/fridge-single-door.jpg',  TRUE,  1),
+(12, '/images/products/fridge-bottom-mount.jpg', TRUE,  1),
+(13, '/images/products/fridge-side-by-side.jpg', TRUE,  1),
 -- Washing Machines (14-19)
-(14, 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(15, 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(16, 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(17, 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(18, 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(19, 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
+(14, '/images/products/washer-front-load.jpg',   TRUE,  1),
+(15, '/images/products/washer-top-load.jpg',     TRUE,  1),
+(16, '/images/products/washer-front-load.jpg',   TRUE,  1),
+(17, '/images/products/washer-front-load.jpg',   TRUE,  1),
+(18, '/images/products/washer-top-load.jpg',     TRUE,  1),
+(19, '/images/products/washer-top-load.jpg',     TRUE,  1),
 -- Televisions (20-25)
-(20, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(21, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(22, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(23, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(24, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(25, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
+(20, '/images/products/tv-qled.jpg',             TRUE,  1),
+(21, '/images/products/tv-qled.jpg',             TRUE,  1),
+(22, '/images/products/tv-oled.jpg',             TRUE,  1),
+(23, '/images/products/tv-qled.jpg',             TRUE,  1),
+(24, '/images/products/tv-qled.jpg',             TRUE,  1),
+(25, '/images/products/tv-qled.jpg',             TRUE,  1),
 -- Smartphones (26-31)
-(26, 'https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(27, 'https://images.unsplash.com/photo-1574920162043-b872873f19c8?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(28, 'https://images.unsplash.com/photo-1598327106026-d9521da673d1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(29, 'https://images.unsplash.com/photo-1598327106026-d9521da673d1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(30, 'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(31, 'https://images.unsplash.com/photo-1609252926473-3b47d93d0745?auto=format&fit=crop&w=800&q=80', TRUE,  1),
+(26, '/images/products/phone-galaxy.jpg',        TRUE,  1),
+(27, '/images/products/phone-android.jpg',       TRUE,  1),
+(28, '/images/products/phone-xiaomi.jpg',        TRUE,  1),
+(29, '/images/products/phone-android.jpg',       TRUE,  1),
+(30, '/images/products/phone-iphone.jpg',        TRUE,  1),
+(31, '/images/products/phone-xiaomi.jpg',        TRUE,  1),
 -- Expanded Products (32-40)
-(32, 'https://images.unsplash.com/photo-1585771724684-38269d6639fd?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(33, 'https://images.unsplash.com/photo-1571175443880-49e1d25b2bc5?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(34, 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(35, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(36, 'https://images.unsplash.com/photo-1593784991095-a205069470b6?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(37, 'https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(38, 'https://images.unsplash.com/photo-1591337676887-a217a6970a8a?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(39, 'https://images.unsplash.com/photo-1574920162043-b872873f19c8?auto=format&fit=crop&w=800&q=80', TRUE,  1),
-(40, 'https://images.unsplash.com/photo-1598327106026-d9521da673d1?auto=format&fit=crop&w=800&q=80', TRUE,  1);
+(32, '/images/products/ac-split.jpg',            TRUE,  1),
+(33, '/images/products/fridge-side-by-side.jpg', TRUE,  1),
+(34, '/images/products/washer-front-load.jpg',   TRUE,  1),
+(35, '/images/products/tv-qled.jpg',             TRUE,  1),
+(36, '/images/products/tv-oled.jpg',             TRUE,  1),
+(37, '/images/products/phone-galaxy.jpg',        TRUE,  1),
+(38, '/images/products/phone-iphone.jpg',        TRUE,  1),
+(39, '/images/products/phone-android.jpg',       TRUE,  1),
+(40, '/images/products/phone-xiaomi.jpg',        TRUE,  1);
 
 -- 6. SEED INVENTORY
 INSERT INTO inventory (product_id, stock_quantity, reserved_quantity) VALUES
